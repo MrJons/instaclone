@@ -41,4 +41,27 @@ feature 'photos' do
       expect(page).to have_css("img[src*='test.jpg']")
     end
   end
+
+  context "can be edited" do
+    scenario 'by clicking on edit link' do
+      visit '/photos'
+      new_post
+      click_link 'Edit'
+      fill_in 'Description', with: 'edited description'
+      click_button 'post'
+      expect(page).not_to have_content('first photo')
+      expect(page).to have_content('edited description')
+      expect(page).to have_css("img[src*='test.jpg']")
+    end
+  end
+
+  context 'can be deleted' do
+    scenario 'by clicking on delete link' do
+      visit '/photos'
+      new_post
+      click_link 'Delete'
+      expect(page).not_to have_content('first photo')
+      expect(page).not_to have_css("img[src*='test.jpg']")
+    end
+  end
 end
