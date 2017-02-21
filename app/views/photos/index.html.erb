@@ -5,7 +5,7 @@
   <% if @photos.any? %>
     <% @photos.each do |photo| %>
       <tr>
-        <td><%= image_tag photo.image.url(:large) %></td>
+        <td class='image' id='photo.id'><%= image_tag photo.image.url(:large) %></td>
         <td><%= photo.description %></td>
         <td><%= link_to 'Show', photo %></td>
         <td><%= link_to 'Edit', edit_photo_path(photo) %></td>

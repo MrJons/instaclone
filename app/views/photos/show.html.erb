@@ -2,6 +2,7 @@
 
 <p>
   <strong>Description:</strong>
+  <%= image_tag @photo.image.url(:large), class: 'photo', id: @photo.id %>
   <%= @photo.description %>
 </p>
 
