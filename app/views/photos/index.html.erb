@@ -1,0 +1,19 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Photos</h1>
+
+  <% if @photos.any? %>
+    <% @photos.each do |photo| %>
+      <tr>
+        <td><%= photo.description %></td>
+        <td><%= link_to 'Show', photo %></td>
+        <td><%= link_to 'Edit', edit_photo_path(photo) %></td>
+        <td><%= link_to 'Destroy', photo, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  <% else %>
+    <h3> There's no photos... add one? </h3>
+  <% end %>
+<br>
+
+<%= link_to 'New post', new_photo_path %>
