@@ -1,0 +1,22 @@
+<nav class="navbar navbar-inverse">
+  <div class="container-fluid">
+
+    <div class="navbar-header">
+      <div class="navbar-brand"><%= link_to 'Instaclone', photos_path %></div>
+    </div>
+
+    <div class="nav navbar-nav navbar-left">
+      <li><%= link_to 'New post', new_photo_path %></li>
+    </div>
+
+    <div class="nav navbar-nav navbar-right">
+      <% if user_signed_in? %>
+        <li><%= link_to 'sign out', destroy_user_session_path, method: :delete %></li>
+      <% else %>
+        <li><%= link_to 'sign in', new_user_session_path %></li>
+        <li><%= link_to 'sign up', new_user_registration_path %></li>
+      <% end %>
+    </div>
+
+  </div><!-- /.container-fluid -->
+</nav>
