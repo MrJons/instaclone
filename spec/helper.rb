@@ -26,3 +26,9 @@ def sign_in
   fill_in 'Password', with: '12345678'
   click_button 'Log in'
 end
+
+def in_add_out
+  sign_up
+  new_post
+  click_link 'sign out'
+end
