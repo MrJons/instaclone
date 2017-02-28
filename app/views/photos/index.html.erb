@@ -1,18 +1,33 @@
 <p id="notice"><%= notice %></p>
 
-<h1>Photos</h1>
+<div class="col-xs-4"></div>
 
+<div class='photo-stream col-xs-4'>
   <% if @photos.any? %>
     <% @photos.each do |photo| %>
-      <tr>
-        <td class='image' id='photo.id'><%= image_tag photo.image.url(:large) %></td>
-        <td><%= photo.description %></td>
-        <td><%= link_to 'Show', photo %></td>
-        <td><%= link_to 'Edit', edit_photo_path(photo) %></td>
-        <td><%= link_to 'Delete', photo, method: :delete %></td>
-      </tr>
+      <div class='post-object container-fluid center-block'
+           style="border:1px solid #cecece; margin: 10px; padding: 10px;">
+
+        <div class='post-image' id='photo.id' style='padding-bottom: 10px;'>
+          <%= image_tag photo.image.url(:large), style: 'max-width: 100%' %>
+        </div> <!-- post-image -->
+
+        <div class='post-options text-left'>
+          <%= link_to 'Show', photo %> |
+          <%= link_to 'Edit', edit_photo_path(photo) %> |
+          <%= link_to 'Delete', photo, method: :delete %>
+        </div> <!-- post-options -->
+
+        <div class='post-description text-left' style='padding-top: 5px;'>
+          <strong>This is...</strong>
+          <%= photo.description %>
+        </div>
+      </div> <!-- post-object -->
+
     <% end %>
   <% else %>
     <h3> There's no photos... add one? </h3>
   <% end %>
-<br>
+</div> <!-- photo-stream -->
+
+<div class="col-xs-4"></div>
