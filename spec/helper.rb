@@ -32,3 +32,9 @@ def in_add_out
   new_post
   click_link 'sign out'
 end
+
+def add_comment
+  click_link 'Comment'
+  fill_in 'Body', with: 'test comment'
+  click_button 'comment'
+end
