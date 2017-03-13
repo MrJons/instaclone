@@ -28,8 +28,8 @@
         <div class='post-comments text-left'>
           <% if photo.comments.any? %>
             <% photo.comments.each do |comment| %>
-              <%= User.find(comment.user_id).email %>
-              <%= comment.body %>
+              <%= User.find(comment.user_id).email %>:
+              <%= comment.body %> <br>
             <% end %>
           <% else %>
             <p>No comments</p>
