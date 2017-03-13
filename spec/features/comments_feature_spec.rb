@@ -18,9 +18,17 @@ feature 'comments' do
     end
   end
 
-  # context 'comments have been added to a post' do
-  #   scenario 'comments should be displayed under post' do
-  #
-  #   end
-  # end
+  context 'comments have been added to a post' do
+    before do
+      add_comment
+    end
+
+    scenario 'Comment should contain poster email' do
+      expect(page).to have_content("test@test.com")
+    end
+
+    scenario 'Comment should contail message' do
+      expect(page).to have_content("test comment")
+    end
+  end
 end

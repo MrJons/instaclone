@@ -8,21 +8,35 @@
 
         <div class='post-image' id='photo.id' style='padding-bottom: 10px;'>
           <%= image_tag photo.image.url(:large), style: 'max-width: 100%' %>
-        </div> <!-- post-image -->
+        </div>
 
-      
+        <div class='post-add-comment'>
+            <%= link_to 'Comment', new_photo_comment_path(photo) %>
+        </div>
 
         <div class='post-options text-left'>
           <%= link_to 'Show', photo %> |
           <%= link_to 'Edit', edit_photo_path(photo) %> |
           <%= link_to 'Delete', photo, method: :delete %>
-        </div> <!-- post-options -->
+        </div>
 
         <div class='post-description text-left' style='padding-top: 5px;'>
           <strong>This is...</strong>
           <%= photo.description %>
         </div>
 
+        <div class='post-comments text-left'>
+          <% if photo.comments.any? %>
+            <% photo.comments.each do |comment| %>
+              <%= User.find(comment.user_id).email %>
+              <%= comment.body %>
+            <% end %>
+          <% else %>
+            <p>No comments</p>
+          <% end %>
+        </div>
+
+      </div>
 
     <% end %>
   <% else %>

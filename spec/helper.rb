@@ -36,5 +36,5 @@ end
 def add_comment
   click_link 'Comment'
   fill_in 'Body', with: 'test comment'
-  click_button 'comment'
+  click_button 'post'
 end
