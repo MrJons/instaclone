@@ -34,6 +34,9 @@
           <br>
           <% if photo.comments.any? %>
             <% photo.comments.each do |comment| %>
+              <%= link_to photo_comment_path(photo, comment), method: :delete, class: "btn btn-mini", id: "comment-delete" do %>
+                <i class="glyphicon glyphicon-remove"></i>
+              <% end %>
               <strong><%= User.find(comment.user_id).email %>:</strong>
               <%= comment.body %><br>
             <% end %>

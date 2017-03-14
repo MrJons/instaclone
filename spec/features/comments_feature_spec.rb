@@ -30,5 +30,12 @@ feature 'comments' do
     scenario 'Comment should contail message' do
       expect(page).to have_content("test comment")
     end
+
+    scenario 'Comment can be deleted' do
+      expect(page).to have_content("test comment")
+      click_link 'comment-delete'
+      expect(page).not_to have_content("test comment")
+    end
   end
+
 end

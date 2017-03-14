@@ -1,5 +1,5 @@
 class CommentsController < ApplicationController
-  before_action :set_photo, only: [:new, :create]
+  before_action :set_photo, only: [:new, :create, :destroy]
 
   def new
     @comment = @photo.comments.new
@@ -8,7 +8,7 @@ class CommentsController < ApplicationController
   def create
     @comment = @photo.comments.new(comment_params)
     @comment.photo_id = @photo.id
-    @comment.user = current_user 
+    @comment.user = current_user
 
     respond_to do |format|
       if @comment.save
@@ -18,6 +18,15 @@ class CommentsController < ApplicationController
         format.html { render :new }
         format.json { render json: @comment.errors, status: :unprocessable_entity }
       end
+    end
+  end
+
+  def destroy
+    @comment = @photo.comments.find(params[:id])
+    @comment.destroy
+    respond_to do |format|
+      format.html { redirect_to photos_url, notice: 'Photo was successfully deleted.' }
+      format.json { head :no_content }
     end
   end
 
