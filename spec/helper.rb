@@ -34,7 +34,7 @@ def in_add_out
 end
 
 def add_comment
-  click_link 'Comment'
+  click_link 'comment-post'
   fill_in 'Body', with: 'test comment'
   click_button 'post'
 end

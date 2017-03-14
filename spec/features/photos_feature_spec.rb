@@ -32,19 +32,6 @@ feature 'photos' do
     end
   end
 
-  context 'photo can be opened on seperate page' do
-    scenario 'by clicking on photo (even when not logged in)' do
-      visit '/photos'
-      sign_up
-      new_post
-      click_link 'Show'
-      photo_id = page.find(".photo")[:id]
-      expect(page).to have_current_path('/photos/' + photo_id)
-      expect(page).to have_content('first photo')
-      expect(page).to have_css("img[src*='test.jpg']")
-    end
-  end
-
   context "can be edited - when logged in" do
     before :each do
       visit '/photos'
@@ -53,7 +40,7 @@ feature 'photos' do
     end
 
     scenario 'by clicking on edit link' do
-      click_link 'Edit'
+      click_link 'edit-post'
       fill_in 'Description', with: 'edited description'
       click_button 'post'
       expect(page).not_to have_content('first photo')
@@ -70,7 +57,7 @@ feature 'photos' do
     end
 
     scenario 'by clicking on delete link' do
-      click_link 'Delete'
+      click_link 'delete-post'
       expect(page).not_to have_content('first photo')
       expect(page).not_to have_css("img[src*='test.jpg']")
     end
@@ -86,14 +73,14 @@ feature 'photos' do
     scenario "trying to edit a post redirects to log in page" do
       visit '/photos'
       in_add_out
-      click_link 'Edit'
+      click_link 'edit-post'
       expect(page).to have_current_path('/users/sign_in')
     end
 
     scenario "trying to delete a post redirects to log in page" do
       visit '/photos'
       in_add_out
-      click_link 'Delete'
+      click_link 'delete-post'
       expect(page).to have_current_path('/users/sign_in')
     end
   end

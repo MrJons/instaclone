@@ -7,15 +7,15 @@
            style="border:1px solid #cecece; margin: 10px; padding: 10px;">
 
         <div class="post-options pull-right">
-          <%= link_to new_photo_comment_path(photo), class: "btn btn-default" do %>
+          <%= link_to new_photo_comment_path(photo), class: "btn btn-default", id: "comment-post" do %>
             <i class="glyphicon glyphicon-comment"></i>
           <% end %>
 
-          <%= link_to edit_photo_path(photo), class: "btn btn-default" do %>
+          <%= link_to edit_photo_path(photo), class: "btn btn-default", id: "edit-post"  do %>
             <i class="glyphicon glyphicon-pencil"></i>
           <% end %>
 
-          <%= link_to photo, method: :delete, class: "btn btn-default" do %>
+          <%= link_to photo, method: :delete, class: "btn btn-default", id: "delete-post"  do %>
             <i class="glyphicon glyphicon-trash"></i>
           <% end %>
         </div>

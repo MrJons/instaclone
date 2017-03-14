@@ -8,8 +8,8 @@ feature 'comments' do
   end
 
   context 'no comments have been added to a photo' do
-    scenario "A message to displaying 'no comments' should be shown" do
-      expect(page).to have_content("No comments")
+    scenario "A message displaying zero comments should be shown" do
+      expect(page).to have_content("0 comments")
     end
 
     scenario 'comments can be added to a post' do

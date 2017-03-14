@@ -8,11 +8,6 @@ class PhotosController < ApplicationController
     @photos = Photo.all
   end
 
-  # GET /photos/1
-  # GET /photos/1.json
-  def show
-  end
-
   # GET /photos/new
   def new
     @photo = Photo.new
@@ -45,7 +40,7 @@ class PhotosController < ApplicationController
 
     respond_to do |format|
       if @photo.update(photo_params)
-        format.html { redirect_to @photo, notice: 'Photo was successfully updated.' }
+        format.html { redirect_to photos_path, notice: 'Photo was successfully updated.' }
         format.json { render :show, status: :ok, location: @photo }
       else
         format.html { render :edit }
