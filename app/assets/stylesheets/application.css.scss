@@ -13,3 +13,11 @@
  */
 
 @import "bootstrap";
+@import url("//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-glyphicons.css");
+
+
+.btn-default {
+  color: #777777;
+  border: none;
+  margin-top: -10px;
+}
