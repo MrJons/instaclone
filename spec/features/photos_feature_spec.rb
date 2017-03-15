@@ -27,6 +27,11 @@ feature 'photos' do
       expect(page).to have_css("img[src*='test.jpg']")
     end
 
+    scenario 'posters email should be given' do
+      poster_id = find_by_id('poster_id')
+      expect(poster_id).to have_content('test@test.com')
+    end
+
     scenario "and the 'no photo' prompt should now not show" do
       expect(page).not_to have_content("There's no photos... add one?")
     end

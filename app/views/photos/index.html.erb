@@ -6,6 +6,10 @@
       <div class='post-object container-fluid center-block'
            style="border:1px solid #cecece; margin: 10px; padding: 10px;">
 
+        <div class='poster_info pull-left' id='poster_id'>
+          By <%= User.find(photo.user_id).email %>
+        </div>
+
         <div class="post-options pull-right">
           <%= link_to like_photo_path(photo), method: :put, class: "btn btn-default", id: "like-post"  do %>
             <i class="glyphicon glyphicon-heart"></i>

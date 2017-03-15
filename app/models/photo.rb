@@ -4,5 +4,6 @@ class Photo < ApplicationRecord
   validates :image, presence: true
 
   has_many :comments, dependent: :destroy
+  belongs_to :user
   acts_as_votable
 end
