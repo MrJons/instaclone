@@ -26,4 +26,15 @@ feature 'likes' do
     end
   end
 
+  context 'a post has been liked' do
+
+    let(:counter) { find_by_id('like-post') }
+
+    scenario 'post cannot be liked more than once' do
+      click_link 'like-post'
+      click_link 'like-post'
+      expect(counter).to have_content(1)
+    end
+  end
+
 end

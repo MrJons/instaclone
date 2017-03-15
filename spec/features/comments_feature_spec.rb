@@ -9,7 +9,8 @@ feature 'comments' do
 
   context 'no comments have been added to a photo' do
     scenario "A message displaying zero comments should be shown" do
-      expect(page).to have_content("0 comments")
+      comment_counter = find_by_id('comment-post')
+      expect(comment_counter).to have_content(0)
     end
 
     scenario 'comments can be added to a post' do

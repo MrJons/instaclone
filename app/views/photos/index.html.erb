@@ -7,8 +7,14 @@
            style="border:1px solid #cecece; margin: 10px; padding: 10px;">
 
         <div class="post-options pull-right">
+          <%= link_to like_photo_path(photo), method: :put, class: "btn btn-default", id: "like-post"  do %>
+            <i class="glyphicon glyphicon-heart"></i>
+            <%= photo.get_likes.size %>
+          <% end %>
+
           <%= link_to new_photo_comment_path(photo), class: "btn btn-default", id: "comment-post" do %>
             <i class="glyphicon glyphicon-comment"></i>
+            <%= photo.comments.count %>
           <% end %>
 
           <%= link_to edit_photo_path(photo), class: "btn btn-default", id: "edit-post"  do %>
@@ -27,14 +33,6 @@
         <div class='post-description text-left'>
           <strong>This is...</strong>
           <%= photo.description %>
-        </div>
-
-        <div class='post-info'>
-          <%= link_to edit_photo_path(photo), class: "btn btn-mini", id: "like-post"  do %>
-            <span style='color: black'>0</span>
-            <i class="glyphicon glyphicon-heart" style='color: #e42a2a'></i>
-          <% end %>
-          <%= pluralize(photo.comments.count, 'comment') %>
         </div>
 
         <div class='post-comments text-left'>

@@ -1,5 +1,5 @@
 class PhotosController < ApplicationController
-  before_action :set_photo, only: [:show, :edit, :update, :destroy]
+  before_action :set_photo, only: [:show, :edit, :update, :destroy, :vote]
   before_action :authenticate_user!, :except => [:show, :index]
 
   # GET /photos
@@ -57,6 +57,11 @@ class PhotosController < ApplicationController
       format.html { redirect_to photos_url, notice: 'Photo was successfully deleted.' }
       format.json { head :no_content }
     end
+  end
+
+  def vote
+    @photo.upvote_by current_user
+    redirect_to photos_path
   end
 
   private

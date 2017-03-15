@@ -39,6 +39,8 @@ gem "paperclip", "~> 5.0.0"
 #user authentication
 gem 'devise'
 
+gem 'acts_as_votable', '~> 0.10.0'
+
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 
