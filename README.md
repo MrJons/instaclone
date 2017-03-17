@@ -1,24 +1,20 @@
-# README
+## Instaclone
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Project is hosted on Heroku [here](https://warm-citadel-45351.herokuapp.com/), and uses AWS S3 for image storage.
 
-Things you may want to cover:
+<strong>Description: </strong>A project to mimic the general functionality of Instagram, which includes:
 
-* Ruby version
+- The ability to sign up, log in & log out;
+- Create a post (Image & Description)
+- As the creator of a post, edit & delete it at a later time.
+- Comment on a post.
+- As the creator of a comment, delete it at a later time.
+- Construct both functional and model validations on user interaction and permissions.
 
-* System dependencies
+##### Interacting
 
-* Configuration
+You can use any of the below user/login profiles to view the edit/delete features.
 
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+- user1@test.com --- password: 12345678
+- user2@test.com --- password: 12345678
+- user3@test.com --- password: 12345678
