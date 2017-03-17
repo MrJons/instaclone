@@ -32,10 +32,26 @@ feature 'comments' do
       expect(page).to have_content("test comment")
     end
 
-    scenario 'Comment can be deleted' do
+    scenario 'Comment can be deleted by user' do
       expect(page).to have_content("test comment")
       click_link 'comment-delete'
       expect(page).not_to have_content("test comment")
+    end
+  end
+
+  context 'the delete cross is not visible to' do
+    user_seed
+    scenario 'a user that is not signed in' do
+      add_comment
+      click_link 'sign out'
+      expect(page).not_to have_link('comment-delete')
+    end
+
+    scenario 'a user who is not the owner of the comment' do
+      add_comment
+      click_link 'sign out'
+      sign_in
+      expect(page).not_to have_link('comment-delete')
     end
   end
 

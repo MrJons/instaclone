@@ -10,7 +10,21 @@
           By <%= User.find(photo.user_id).email %>
         </div>
 
-        <div class="post-options pull-right">
+        <% if current_user != nil %>
+          <% if photo.user_id == current_user.id %>
+            <div class="post-options pull-right">
+              <%= link_to edit_photo_path(photo), class: "btn btn-default", id: "edit-post"  do %>
+                <i class="glyphicon glyphicon-pencil"></i>
+              <% end %>
+
+              <%= link_to photo, method: :delete, class: "btn btn-default", id: "delete-post"  do %>
+                <i class="glyphicon glyphicon-trash"></i>
+              <% end %>
+            </div>
+          <% end %>
+        <% end %>
+
+        <div class="post-stats pull-right">
           <%= link_to like_photo_path(photo), method: :put, class: "btn btn-default", id: "like-post"  do %>
             <i class="glyphicon glyphicon-heart"></i>
             <%= photo.get_likes.size %>
@@ -19,14 +33,6 @@
           <%= link_to new_photo_comment_path(photo), class: "btn btn-default", id: "comment-post" do %>
             <i class="glyphicon glyphicon-comment"></i>
             <%= photo.comments.count %>
-          <% end %>
-
-          <%= link_to edit_photo_path(photo), class: "btn btn-default", id: "edit-post"  do %>
-            <i class="glyphicon glyphicon-pencil"></i>
-          <% end %>
-
-          <%= link_to photo, method: :delete, class: "btn btn-default", id: "delete-post"  do %>
-            <i class="glyphicon glyphicon-trash"></i>
           <% end %>
         </div>
 
@@ -42,8 +48,12 @@
         <div class='post-comments text-left'>
           <% if photo.comments.any? %>
             <% photo.comments.each do |comment| %>
-              <%= link_to photo_comment_path(photo, comment), method: :delete, class: "btn btn-mini", id: "comment-delete" do %>
-                <i class="glyphicon glyphicon-remove"></i>
+              <% if current_user != nil %>
+                <% if current_user.id == comment.user_id %>
+                  <%= link_to photo_comment_path(photo, comment), method: :delete, class: "btn btn-mini", id: "comment-delete" do %>
+                    <i class="glyphicon glyphicon-remove"></i>
+                  <% end %>
+                <% end %>
               <% end %>
               <strong><%= User.find(comment.user_id).email %>:</strong>
               <%= comment.body %><br>

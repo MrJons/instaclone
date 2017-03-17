@@ -75,18 +75,33 @@ feature 'photos' do
       expect(page).to have_current_path('/users/sign_in')
     end
 
-    scenario "trying to edit a post redirects to log in page" do
+    scenario "there should be no edit button on a post" do
       visit '/photos'
       in_add_out
-      click_link 'edit-post'
-      expect(page).to have_current_path('/users/sign_in')
+      expect(page).not_to have_link('edit-post')
     end
 
-    scenario "trying to delete a post redirects to log in page" do
+    scenario "there should be no delete button on a post" do
       visit '/photos'
       in_add_out
-      click_link 'delete-post'
-      expect(page).to have_current_path('/users/sign_in')
+      expect(page).not_to have_link('delete-post')
+    end
+  end
+
+  context 'when not the owner of a post' do
+    user_seed
+    scenario "there should be no edit button on a post" do
+      visit '/photos'
+      in_add_out
+      sign_in
+      expect(page).not_to have_link('edit-post')
+    end
+
+    scenario "there should be no delete button on a post" do
+      visit '/photos'
+      in_add_out
+      sign_in
+      expect(page).not_to have_link('delete-post')
     end
   end
 end
